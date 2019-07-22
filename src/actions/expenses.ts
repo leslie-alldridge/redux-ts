@@ -1,30 +1,32 @@
-import uuid from "uuid";
+import uuid from 'uuid';
+import { Expense } from '../types/expense';
+import { AppActions } from '../types/actions';
 
-export const addExpense = expense => ({
-  type: "ADD_EXPENSE",
+export const addExpense = (expense: Expense): AppActions => ({
+  type: 'ADD_EXPENSE',
   expense
 });
 
-export const removeExpense = id => ({
-  type: "REMOVE_EXPENSE",
+export const removeExpense = (id: string): AppActions => ({
+  type: 'REMOVE_EXPENSE',
   id
 });
 
-export const editExpense = expense => ({
-  type: "EDIT_EXPENSE",
+export const editExpense = (expense: Expense): AppActions => ({
+  type: 'EDIT_EXPENSE',
   expense
 });
 
-export const setExpenses = expenses => ({
-  type: "SET_EXPENSES",
+export const setExpenses = (expenses: Expense[]): AppActions => ({
+  type: 'SET_EXPENSES',
   expenses
 });
 
 export const startAddExpense = ({ description, note, amount, createdAt }) => {
   return (dispatch, getState) => {
     const {
-      description = "",
-      note = "",
+      description = '',
+      note = '',
       amount = 0,
       createdAt = 0
     } = expenseData;
